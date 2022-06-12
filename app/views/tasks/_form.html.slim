@@ -1,0 +1,12 @@
+= simple_form_for @task do |f|
+  = f.input :project_id, as: :select, collection: Project.all.pluck(:id), prompt: "Select project"
+
+  = f.input :title, placeholder: "Do some stuff"
+
+  = f.input :description, placeholder: "Use some things"
+
+  = f.input :deadline_at
+
+  = f.button :submit, class: "btn btn-dark", style: "margin-top: 10px;"
+
+  = link_to 'Back', tasks_path, class: "btn btn-secondary", style: "margin-top: 10px; margin-left: 10px"

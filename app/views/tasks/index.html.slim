@@ -1,0 +1,31 @@
+h1 Tasks
+
+table
+  thead
+    tr
+      th Project ID
+      th Title
+      th Description
+      th Deadline at
+      
+  tbody
+    - @tasks.each do |task|
+      tr
+        td
+          = task.project_id
+        td 
+          = task.title
+        td 
+          = task.description
+        td 
+          = task.deadline_at
+        td 
+          = link_to 'Show', task
+        td 
+          = link_to 'Edit', edit_task_path(task)
+        td 
+          = link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
+
+br
+
+= link_to 'New Task', new_task_path, class: "btn btn-dark"
