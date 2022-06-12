@@ -31,7 +31,7 @@ html
             li class="nav-item active"
               = link_to current_user.email || current_user.full_name, current_user, class: "nav-link"
             li class="nav-item active"
-              = link_to "Sign Out", session_path, method: :delete, data: {confirm: 'Are you sure?' }, class: "nav-link end"
+              = link_to "Sign Out", '/sign-out', method: :delete, data: {confirm: 'Are you sure?' }, class: "nav-link end"
         - else
           ul class="navbar-nav ms-auto"
             li class="nav-item active"
