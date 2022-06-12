@@ -2,10 +2,10 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: %i[show edit update destroy]
   before_action -> { authorize @project }, only: %i[show edit update destroy]
+  before_action -> { authorize Project }, only: %i[index new create]
 
   def index
     @projects = Project.all
-    authorize @projects
   end
 
   def show
@@ -13,7 +13,6 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    authorize @project
   end
 
   def edit
@@ -21,7 +20,6 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    authorize @project
 
     if @project.save
       redirect_to @project, notice: 'Project was successfully created'

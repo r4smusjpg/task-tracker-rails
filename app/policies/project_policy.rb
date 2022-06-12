@@ -6,19 +6,23 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def show?
-    user.present?
+    index?
+  end
+
+  def new?
+    create?
   end
 
   def create?
     user.present?
   end
 
-  def update?
-    user.present?
-  end
-
   def edit?
     update?
+  end
+
+  def update?
+    user.present?
   end
 
   def destroy?

@@ -4,19 +4,19 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def show?
-    user.present?
-  end
-
-  def create?
-    user.present?
+    index?
   end
 
   def new?
     create?
   end
 
-  def update?
+  def create?
     user.present?
+  end
+
+  def update?
+    task.project.id == user.id
   end
 
   def edit?

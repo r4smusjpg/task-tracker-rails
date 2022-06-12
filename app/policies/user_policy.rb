@@ -1,14 +1,14 @@
 class UserPolicy < ApplicationPolicy
-  def create?
-    !user.present?
+  def show?
+    user.present?
   end
 
   def new?
     create?
   end
 
-  def show?
-    user.present?
+  def create?
+    !user.present?
   end
 
   def edit?

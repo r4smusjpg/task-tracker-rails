@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   before_action -> { authorize current_user }, only: %i[show edit update]
+  before_action -> { authorize User }, only: %i[new create]
 
   def show
   end
 
   def new
     @user = User.new
-    authorize @user
   end
 
   def edit
@@ -22,7 +22,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(users_params)
-    authorize @user
 
     if @user.save
       redirect_to root_path, notice: "You have successfully signed up."
