@@ -12,7 +12,7 @@ module Authentication
     @current_user = @current_user || User.find_by(id: session[:current_user_id])
   end
 
-  def authenticate_user!
+  def authenticate_current_user!
     return if current_user.present?
 
     raise UserNotAuthenticated, "No current_user_id in session."

@@ -12,14 +12,6 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def update
-    if current_user.update(users_params)
-      redirect_to current_user, notice: 'Your profile was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
   def create
     @user = User.new(users_params)
 
@@ -28,6 +20,14 @@ class UsersController < ApplicationController
       session[:current_user_id] = @user.id
     else
       render :new
+    end
+  end
+
+  def update
+    if current_user.update(users_params)
+      redirect_to current_user, notice: 'Your profile was successfully updated.'
+    else
+      render :edit
     end
   end
 

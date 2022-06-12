@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_current_user!
   before_action :set_task, only: %i[show edit update destroy]
   before_action -> { authorize @task }, only: %i[show edit update destroy]
   before_action -> { authorize Task }, only: %i[index new create]

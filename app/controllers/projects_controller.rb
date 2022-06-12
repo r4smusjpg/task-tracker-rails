@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_current_user!
   before_action :set_project, only: %i[show edit update destroy]
   before_action -> { authorize @project }, only: %i[show edit update destroy]
   before_action -> { authorize Project }, only: %i[index new create]
