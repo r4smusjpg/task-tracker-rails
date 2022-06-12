@@ -1,0 +1,8 @@
+= simple_form_for @user do |f|
+  = f.input :email, placeholder: "example@gmail.com"
+
+  = f.input :full_name, placeholder: "Ivan Ivanov"
+
+  = f.input :password, placeholder: "********"
+
+  = f.submit "Sign Up", class: "btn btn-dark", style: "margin-top: 10px;"

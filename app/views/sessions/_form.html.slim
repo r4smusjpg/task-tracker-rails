@@ -1,0 +1,9 @@
+= simple_form_for user, url: session_path do |f|
+  = f.error :base
+
+  = f.input :email, placeholder: "example@gmail.com"
+
+  = f.input :password, placeholder: "********"
+
+  = f.submit "Sign In", class: "btn btn-dark", style: "margin-top: 10px;"
+
