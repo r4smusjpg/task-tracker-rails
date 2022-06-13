@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(users_params)
-      redirect_to current_user, notice: 'Your profile was successfully updated.'
+      redirect_to '/profile', notice: 'Your profile was successfully updated.'
     else
       render :edit
     end
