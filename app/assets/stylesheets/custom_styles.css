@@ -1,0 +1,34 @@
+body {
+    font-family: "ZCOOL QingKe HuangYou";
+}
+
+a.navbar-brand {
+    margin-left: 20px;
+    font-size: 2em;
+}
+
+a.nav-link {
+    font-size: 1.5em;
+}
+
+a.nav-link.end {
+    margin-right: 20px;
+}
+
+div.alert.alert-light.flash-alert {
+    margin-top: 15x;
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+div.alert.alert-light.flash-notice {
+    margin-top: 15px;
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+div.container {
+    margin-top: 40px;
+}

@@ -1,4 +1,6 @@
 class TaskPolicy < ApplicationPolicy
+  alias_method :task, :record
+
   def index?
     user.present?
   end
@@ -16,7 +18,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def update?
-    task.project.id == user.id
+    task.project.user_id == user.id
   end
 
   def edit?
