@@ -25,14 +25,6 @@ ActiveRecord::Schema.define(version: 2022_06_14_014228) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
-  create_table "projects_users", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "project_id"
-    t.string "role"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "tasks", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
@@ -52,6 +44,5 @@ ActiveRecord::Schema.define(version: 2022_06_14_014228) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "projects", "users"
   add_foreign_key "tasks", "projects"
 end

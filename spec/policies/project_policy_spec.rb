@@ -45,14 +45,14 @@ RSpec.describe 'ProjectPolicy', type: :policy do
     context 'when user is not authenticated' do
       let(:user) { nil }
 
-      it { is_expected.to eq(false)}
+      it { is_expected.to eq(false) }
     end
 
     context 'when user is authenticated' do
       let(:user) { User.new }
 
-      it { is_expected.to eq(true)}
-    end    
+      it { is_expected.to eq(true) }
+    end
   end
 
   describe '#create?' do
@@ -61,30 +61,18 @@ RSpec.describe 'ProjectPolicy', type: :policy do
     context 'when user is not authenticated' do
       let(:user) { nil }
 
-      it { is_expected.to eq(false)}
+      it { is_expected.to eq(false) }
     end
 
     context 'when user is authenticated' do
       let(:user) { User.new }
 
-      it { is_expected.to eq(true)}
-    end   
+      it { is_expected.to eq(true) }
+    end
   end
 
   describe '#edit?' do
-    subject { policy.update? }
-
-    let(:user) { User.new(id: 42) }
-
-    context 'when user is not creator of the project' do
-      it { is_expected.to eq(false) }
-    end
-
-    context 'when user is creator of the project' do
-      let(:project) { Project.new(user: user) }
-
-      it { is_expected.to eq(true) }
-    end
+    
   end
 
   describe '#update?' do
@@ -92,30 +80,18 @@ RSpec.describe 'ProjectPolicy', type: :policy do
 
     let(:user) { User.new(id: 42) }
 
-    context 'when user is not creator of the project' do
+    context 'when user is not member of a project' do
       it { is_expected.to eq(false) }
     end
 
-    context 'when user is creator of the project' do
-      let(:project) { Project.new(user: user) }
+    context 'when user is member of a project' do
+      let(:project) { Project.new(user_ids: [user]) }
 
       it { is_expected.to eq(true) }
     end
   end
 
   describe '#destroy?' do
-    subject { policy.update? }
 
-    let(:user) { User.new(id: 42) }
-
-    context 'when user is not creator of the project' do
-      it { is_expected.to eq(false) }
-    end
-
-    context 'when user is creator of the project' do
-      let(:project) { Project.new(user: user) }
-
-      it { is_expected.to eq(true) }
-    end
   end
 end
