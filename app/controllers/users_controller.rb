@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action -> { authorize current_user }, only: %i[show edit update]
-  before_action -> { authorize User }, only: %i[new create]
+  before_action :authenticate_current_user!, only: %i[show edit update]
+  skip_after_action :verify_authorized
 
   def show
   end

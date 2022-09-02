@@ -13,6 +13,10 @@ class TaskPolicy < ApplicationPolicy
     create?
   end
 
+  def edit?
+    update?
+  end
+
   def create?
     user.present?
   end
@@ -21,12 +25,14 @@ class TaskPolicy < ApplicationPolicy
     task.project.user_id == user.id
   end
 
-  def edit?
+  def destroy?
     update?
   end
 
-  def destroy?
-    update?
+  class Scope < Scope
+    def resolve
+      scope.all
+    end
   end
 end
 

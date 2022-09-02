@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  # relations
   belongs_to :project
 
   # validations
