@@ -22,7 +22,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def update?
-    project.user_ids.include?(user.id)
+    project.user_id == current_user.id
   end
 
   def destroy?
