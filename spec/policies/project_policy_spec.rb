@@ -72,7 +72,19 @@ RSpec.describe 'ProjectPolicy', type: :policy do
   end
 
   describe '#edit?' do
-    
+    subject { policy.edit? }
+
+    let(:user) { User.new(id: 42) }
+
+    context 'when user is not creator of the project' do
+      it { is_expected.to eq(false) }
+    end
+
+    context 'when user is creator of the project' do
+      let(:project) { Project.new(user: user) }
+
+      it { is_expected.to eq(true) }
+    end
   end
 
   describe '#update?' do
@@ -80,18 +92,30 @@ RSpec.describe 'ProjectPolicy', type: :policy do
 
     let(:user) { User.new(id: 42) }
 
-    context 'when user is not member of a project' do
+    context 'when user is not creator of the project' do
       it { is_expected.to eq(false) }
     end
 
-    context 'when user is member of a project' do
-      let(:project) { Project.new(user_ids: [user]) }
+    context 'when user is creator of the project' do
+      let(:project) { Project.new(user: user) }
 
       it { is_expected.to eq(true) }
     end
   end
 
   describe '#destroy?' do
+    subject { policy.destroy? }
 
+    let(:user) { User.new(id: 42) }
+
+    context 'when user is not creator of the project' do
+      it { is_expected.to eq(false) }
+    end
+
+    context 'when user is creator of the project' do
+      let(:project) { Project.new(user: user) }
+
+      it { is_expected.to eq(true) }
+    end
   end
 end

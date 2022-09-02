@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # relations
   has_secure_password
 
-  has_and_belongs_to_many :projects
+  has_many :projets
 
   # validations
   validates :email, presence: true, uniqueness: true
