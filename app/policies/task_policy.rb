@@ -10,7 +10,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def new?
-    create?
+    index?
   end
 
   def edit?
@@ -18,7 +18,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    task.project.user_id == user.id
   end
 
   def update?

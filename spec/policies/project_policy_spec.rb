@@ -8,8 +8,6 @@ RSpec.describe 'ProjectPolicy', type: :policy do
   describe '#index?' do
     subject { policy.index? }
 
-    let(:project) { Project }
-
     context 'when user is not authenticated' do
       let(:user) { nil }
 
