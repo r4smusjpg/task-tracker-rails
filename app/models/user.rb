@@ -6,4 +6,9 @@ class User < ApplicationRecord
 
   # validations
   validates :email, presence: true, uniqueness: true
+
+  # methods
+  def to_s
+    self.full_name.blank? ? self.email : self.full_name
+  end
 end

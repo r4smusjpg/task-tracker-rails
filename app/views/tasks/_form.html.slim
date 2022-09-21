@@ -1,9 +1,11 @@
 = simple_form_for @task do |f|
-  = f.input :project_id, as: :select, collection: Project.all.pluck(:name, :id), prompt: "Select project"
+  = f.input :project_id, collection: Project.all.pluck(:name, :id), prompt: "Select project"
 
   = f.input :title, placeholder: "Do some stuff"
 
   = f.input :description, placeholder: "Use some things"
+
+  = f.input :status, collection: Task::ALLOWED_STATUSES, include_blank: false
 
   = f.input :deadline_at
 

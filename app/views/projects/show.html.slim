@@ -9,6 +9,11 @@ p
   strong Description: 
   = @project.description
 
+p
+  strong Project members: 
+  - @members.each do |m|
+    a = m.to_s
+
 = link_to 'Edit', edit_project_path(@project), class: "btn btn-dark"
 
 = link_to 'Back', projects_path, class: "btn btn-secondary", style: "margin-left: 10px;"

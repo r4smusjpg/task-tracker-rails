@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @members = User.where(id: @project.user_ids)
   end
 
   def new
@@ -48,6 +49,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:name, :description, user_ids: []).merge(user_ids: current_user.id)
+      params.require(:project).permit(:name, :description, user_ids: []).merge(user_id: current_user.id)
     end
 end

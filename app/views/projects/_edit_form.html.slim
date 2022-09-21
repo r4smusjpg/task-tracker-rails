@@ -1,0 +1,10 @@
+= simple_form_for @project do |f|
+  = f.input :name, placeholder: "Awesome project"
+
+  = f.input :description, placeholder: "We'll do great stuff!"
+
+  = f.input :user_ids, as: :select, collection: User.all.pluck(:email, :id), input_html: { multiple: true }, prompt: 'Add users to your project', label: 'Users'
+
+  = f.button :submit, class: "btn btn-dark", style: "margin-top: 10px;"
+
+  = link_to 'Back', projects_path, class: "btn btn-secondary", style: "margin-top: 10px; margin-left: 10px;"
