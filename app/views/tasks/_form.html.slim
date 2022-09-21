@@ -1,5 +1,5 @@
 = simple_form_for @task do |f|
-  = f.input :project_id, as: :select, collection: Project.all.pluck(:id), prompt: "Select project"
+  = f.input :project_id, as: :select, collection: Project.all.pluck(:name, :id), prompt: "Select project"
 
   = f.input :title, placeholder: "Do some stuff"
 

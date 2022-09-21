@@ -8,6 +8,7 @@ RSpec.describe 'view the project', type: :feature do
   scenario 'User views a project' do
     visit project_path(project)
 
-    expect(page).to have_content('A test project')
+    expect(page).to have_content project.name
+    expect(page).to have_content project.description
   end
 end

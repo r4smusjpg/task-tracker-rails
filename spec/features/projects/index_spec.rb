@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'view projects index' do
+RSpec.describe 'visit projects index' do
   include_context 'when user signed in'
 
   let!(:project1) { create(:project, name: 'Project #1') }
@@ -10,10 +10,11 @@ RSpec.describe 'view projects index' do
   scenario 'user views project index' do
     visit projects_path
 
-    expect(page).to have_content 'Project #1'
-    expect(page).to have_content 'Project #2'
-    expect(page).to have_content 'Project #3'
     expect(page).to have_content 'Projects'
+    expect(page).to have_table
+    expect(page).to have_content project1.name
+    expect(page).to have_content project2.name
+    expect(page).to have_content project3.name
     expect(page).to have_content 'New Project'
   end
 end

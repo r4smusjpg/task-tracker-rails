@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :authenticate_current_user!
   before_action :set_task, only: %i[show edit update destroy]
   before_action -> { authorize @task }, only: %i[show edit update destroy]
-  before_action -> { authorize Task }, only: %i[index new create]
+  before_action -> { authorize Task }, only: %i[index new]
 
   def index
     @tasks = Task.all
@@ -20,6 +20,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    authorize @task
 
     if @task.save
       redirect_to @task, notice: 'Task was successfully created.'

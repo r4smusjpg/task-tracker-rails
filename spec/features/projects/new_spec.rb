@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe('creates new project') do
+RSpec.describe('create new project') do
   include_context 'when user signed in'
 
   scenario 'user creates new project' do
