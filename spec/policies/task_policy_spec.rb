@@ -24,6 +24,7 @@ RSpec.describe 'TaskPolicy', type: :policy do
   describe '#show?' do
     subject { policy.show? }
 
+    let(:project) { Project.new(name: 'project', user_id: 42) }
     let(:task) { Task.new }
 
     context 'when user is authenticated' do
@@ -83,7 +84,7 @@ RSpec.describe 'TaskPolicy', type: :policy do
     subject { policy.destroy? }
 
     let(:creator) { User.new(id: 43) }
-    let(:project) { Project.new(id: 42, user: creator) }
+    let(:project) { Project.new(id: 42, user_id: creator.id) }
     let(:task) { Task.new(project: project) }
 
     context 'when user is creator of the project' do
