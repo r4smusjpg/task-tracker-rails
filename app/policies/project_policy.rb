@@ -18,11 +18,11 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    index?
   end
 
   def update?
-    project.user_id == user.id
+    project.user_ids.include?(user.id)
   end
 
   def destroy?

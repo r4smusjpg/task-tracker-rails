@@ -6,7 +6,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def show?
-    index?
+    create?
   end
 
   def new?
@@ -14,19 +14,19 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def edit?
-    update?
+    create?
   end
 
   def create?
-    task.project.user_id == user.id
+    task.project.user_ids.include?(user.id)
   end
 
   def update?
-    task.project.user_id == user.id
+    create?
   end
 
   def destroy?
-    update?
+    create?
   end
 
   class Scope < Scope
