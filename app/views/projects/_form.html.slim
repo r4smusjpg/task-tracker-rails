@@ -5,6 +5,6 @@
 
   = f.input :user_ids, collection: User.all.pluck(:email, :id), input_html: { multiple: true }, prompt: 'Add users to your project'
 
-  = f.button :submit, class: "btn btn-dark", class: "btn btn-dark", style: "margin-top: 10px;"
+  = f.button :submit, class: "btn btn-dark", style: "margin-top: 10px;"
 
   = link_to 'Back', projects_path, class: "btn btn-secondary", style: "margin-top: 10px; margin-left: 10px;"

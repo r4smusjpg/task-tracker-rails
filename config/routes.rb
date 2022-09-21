@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :projects, :tasks
+  resources :projects
+  resources :tasks do
+    resources :comments, only: %i[create edit update destroy]
+  end
 
   resources :users, only: %i[new edit create update]
   get '/profile', to: "users#show"

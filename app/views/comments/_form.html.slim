@@ -1,0 +1,4 @@
+= simple_form_for [@task, @comment] do |f|
+  = f.input :content, label: 'Leave a comment', placeholder: 'Wow! Such a cool task!'
+
+  = f.button :submit, class: "btn btn-dark", style: "margin-top: 10px;"
