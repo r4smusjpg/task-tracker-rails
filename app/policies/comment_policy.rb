@@ -6,14 +6,14 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def edit?
-    create?
+    destroy?
   end
 
   def update?
-    create?
+    destroy?
   end
 
   def destroy?
-    create?
+    comment.user.id == user.id
   end
 end

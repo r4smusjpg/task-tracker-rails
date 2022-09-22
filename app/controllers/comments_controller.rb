@@ -1,10 +1,11 @@
 class CommentsController < ApplicationController
   before_action :authenticate_current_user!
   before_action :set_comment, except: [:create]
-  skip_after_action :verify_authorized
+  before_action -> { authorize @comment }, except: [:create]
 
   def create
     @comment = Comment.new(comment_params)
+    authorize @comment
 
     if @comment.save
       redirect_to @comment.task, notice: 'Comment was successfully created.'
@@ -14,6 +15,7 @@ class CommentsController < ApplicationController
   end
   
   def edit
+    @task = @comment.task
   end
 
   def update
