@@ -24,17 +24,19 @@ RSpec.describe 'TaskPolicy', type: :policy do
   describe '#show?' do
     subject { policy.show? }
 
-    let(:project) { Project.new(name: 'project', user_id: 42) }
-    let(:task) { Task.new }
 
-    context 'when user is authenticated' do
-      let(:user) { User.new }
+    let(:member) { User.new(id: 42) }
+    let(:project) { Project.new(id: 43, users: [member]) }
+    let(:task) { Task.new(id: 44, project: project) }
+
+    context 'when user is a member of project' do
+      let(:user) { member }
 
       it { is_expected.to eq(true) }
     end
 
-    context 'when user is not authenticated' do
-      let(:user) { nil }
+    context 'when user is not a member of project' do
+      let(:user) { User.new(id: 52) }
 
       it { is_expected.to eq(false) }
     end
@@ -43,19 +45,19 @@ RSpec.describe 'TaskPolicy', type: :policy do
   describe '#create?' do
     subject { policy.create? }
 
-    let(:creator) { User.new(id: 43) }
-    let(:project) { Project.new(id: 42, user: creator) }
-    let(:task) { Task.new(project: project) }
+    let(:member) { User.new(id: 42) }
+    let(:project) { Project.new(id: 43, users: [member]) }
+    let(:task) { Task.new(id: 44, project: project) }
 
-    context 'when user is creator of the project' do
-      let(:user) { creator }
-    
+    context 'when user is a member of project' do
+      let(:user) { member }
+
       it { is_expected.to eq(true) }
     end
 
-    context 'when user is not creator of the project' do
-      let(:user) { User.new(id: 44) }
-    
+    context 'when user is not a member of project' do
+      let(:user) { User.new(id: 52) }
+
       it { is_expected.to eq(false) }
     end
   end
@@ -63,19 +65,19 @@ RSpec.describe 'TaskPolicy', type: :policy do
   describe '#update?' do
     subject { policy.update? }
 
-    let(:creator) { User.new(id: 43) }
-    let(:project) { Project.new(id: 42, user: creator) }
-    let(:task) { Task.new(project: project) }
+    let(:member) { User.new(id: 42) }
+    let(:project) { Project.new(id: 43, users: [member]) }
+    let(:task) { Task.new(id: 44, project: project) }
 
-    context 'when user is creator of the project' do
-      let(:user) { creator }
-    
+    context 'when user is a member of project' do
+      let(:user) { member }
+
       it { is_expected.to eq(true) }
     end
 
-    context 'when user is not creator of the project' do
-      let(:user) { User.new(id: 44) }
-    
+    context 'when user is not a member of project' do
+      let(:user) { User.new(id: 52) }
+
       it { is_expected.to eq(false) }
     end
   end
@@ -83,19 +85,19 @@ RSpec.describe 'TaskPolicy', type: :policy do
   describe '#destroy?' do
     subject { policy.destroy? }
 
-    let(:creator) { User.new(id: 43) }
-    let(:project) { Project.new(id: 42, user_id: creator.id) }
-    let(:task) { Task.new(project: project) }
+    let(:member) { User.new(id: 42) }
+    let(:project) { Project.new(id: 43, users: [member]) }
+    let(:task) { Task.new(id: 44, project: project) }
 
-    context 'when user is creator of the project' do
-      let(:user) { creator }
-    
+    context 'when user is a member of project' do
+      let(:user) { member }
+
       it { is_expected.to eq(true) }
     end
 
-    context 'when user is not creator of the project' do
-      let(:user) { User.new(id: 44) }
-    
+    context 'when user is not a member of project' do
+      let(:user) { User.new(id: 52) }
+
       it { is_expected.to eq(false) }
     end
   end

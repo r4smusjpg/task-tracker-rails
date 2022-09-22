@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'visit projects index' do
   include_context 'when user signed in'
 
-  let!(:project1) { create(:project, name: 'Project #1', users:) }
+  let!(:project1) { create(:project, name: 'Project #1') }
   let!(:project2) { create(:project, name: 'Project #2') }
   let!(:project3) { create(:project, name: 'Project #3') }
 

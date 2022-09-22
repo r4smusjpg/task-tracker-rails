@@ -79,7 +79,7 @@ RSpec.describe ProjectPolicy, type: :policy do
     end
 
     context 'when user is creator of the project' do
-      let(:project) { Project.new(user: user) }
+      let(:project) { Project.new(users: [user]) }
 
       it { is_expected.to eq(true) }
     end
@@ -95,7 +95,7 @@ RSpec.describe ProjectPolicy, type: :policy do
     end
 
     context 'when user is creator of the project' do
-      let(:project) { Project.new(user: user) }
+      let(:project) { Project.new(users: [user]) }
 
       it { is_expected.to eq(true) }
     end
@@ -111,7 +111,7 @@ RSpec.describe ProjectPolicy, type: :policy do
     end
 
     context 'when user is creator of the project' do
-      let(:project) { Project.new(user: user) }
+      let(:project) { Project.new(users: [user]) }
 
       it { is_expected.to eq(true) }
     end
