@@ -22,6 +22,8 @@ gem 'slim'
 gem 'simple_form'
 gem 'pundit'
 gem 'graphql'
+gem 'interactor'
+gem 'sidekiq'
 
 
 # Use Active Storage variant
@@ -38,6 +40,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'simplecov', require: false
+  gem "letter_opener"
 end
 
 group :development do
