@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe('create new task') do
   include_context 'when user signed in'
 
-  let!(:project) { create(:project, user: current_user, name: 'Aboba project') }
+  let!(:project) { create(:project, users: [current_user], name: 'Aboba project') }
 
   context 'when user is an author of project' do
     scenario 'user creates new task' do

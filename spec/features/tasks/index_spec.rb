@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe('visit tasks index') do
   include_context 'when user signed in'
-  let!(:project) { create(:project, name: 'Sample project') }
+  let!(:project) { create(:project, name: 'Sample project', users: [current_user]) }
   let!(:task1) { create(:task, project: project, title: 'Task 1') }
   let!(:task2) { create(:task, project: project, title: 'Task 2') }
   let!(:task3) { create(:task, project: project, title: 'Task 3') }

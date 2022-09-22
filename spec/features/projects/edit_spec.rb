@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe('edit the project') do
   include_context 'when user signed in'
 
-  let(:project) { create(:project, user: current_user) }  
+  let(:project) { create(:project, users: [current_user]) }  
 
   scenario 'user edits project' do
     visit edit_project_path(project)

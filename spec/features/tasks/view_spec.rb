@@ -1,7 +1,7 @@
 RSpec.describe('view a task') do
   include_context 'when user signed in'
 
-  let!(:project) { create(:project, user: current_user) }
+  let!(:project) { create(:project, users: [current_user]) }
   let!(:task) { create(:task, project: project) }
 
   scenario 'user views a task' do
