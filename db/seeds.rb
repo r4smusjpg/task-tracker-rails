@@ -39,7 +39,7 @@ end
     5.times do |c|
       content = Faker::Hacker.say_something_smart
       user = User.find(p + 1)
-      task = Task.find(t + 1)
+      task = Task.find(p + 1)
 
       Comment.create!(user: user,
                       task: task,
