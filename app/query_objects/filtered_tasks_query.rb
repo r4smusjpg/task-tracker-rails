@@ -1,3 +1,5 @@
+# how to use: FilteredTasksQuery.new(Task.all, status: 'not_started')
+
 class FilteredTasksQuery < BaseFilteredQuery
   ALLOWED_PARAMS = [:status]
 
