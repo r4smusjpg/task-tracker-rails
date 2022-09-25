@@ -20,17 +20,19 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
+    authorize Project, :create?
 
-    if @project.save
+    @project = create_project.project
+    if create_project.success?
       redirect_to @project, notice: 'Project was successfully created.'
     else
       render :new
     end
   end
 
+  # PATCH/PUT /projects/1
   def update
-    if @project.update(project_params)
+    if update_project.success?
       redirect_to @project, notice: 'Project was successfully updated.'
     else
       render :edit
@@ -43,12 +45,20 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+    def create_project
+      @create_project ||= CreateProject.call(project_params: project_params, current_user: current_user)
+    end
+
+    def update_project
+      @update_project ||= UpdateProject.call(project_params: project_params, current_user: current_user, project: @project)
+    end
   
     def set_project
       @project = Project.find(params[:id])
     end
 
     def project_params
-      params.require(:project).permit(:name, :description, user_ids: []).merge(user_id: current_user.id)
+      params.require(:project).permit(:name, :description, user_ids: [])
     end
 end
