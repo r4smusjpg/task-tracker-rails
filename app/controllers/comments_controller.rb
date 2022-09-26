@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_current_user!
-  before_action :set_comment, except: [:create]
-  before_action -> { authorize @comment }, except: [:create]
+  before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action -> { authorize @comment }, only: [:edit, :update, :destroy]
 
   def create
     @comment = Comment.new(comment_params)
