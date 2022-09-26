@@ -32,7 +32,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @task.update(task_params)
+    if update_task.success?
       redirect_to @task, notice: 'Task was successfully updated.'
     else
       render :edit
@@ -47,6 +47,10 @@ class TasksController < ApplicationController
   private
     def create_task
       @create_task ||= CreateTask.call(task_params: task_params)
+    end
+
+    def update_task
+      @update_task ||= UpdateTask.call(task_params: task_params, task: @task)
     end
 
     def set_task
