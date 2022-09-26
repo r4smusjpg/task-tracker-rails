@@ -1,4 +1,6 @@
 h5 Comments:
 - @comments.all.each do |comment|
-  p = comment.user.to_s + ': ' + comment.content
-  = link_to 'Edit', edit_task_comment_path(@task, comment), class: 'btn btn-dark', style: 'margin-left: 35em'
+  p 
+    = comment.user.to_s + ': ' + comment.content
+    = link_to 'Edit', edit_task_comment_path(@task, comment), class: 'btn btn-dark'
+    = link_to 'Delete', task_comment_path(@task, comment), method: :delete, class: 'btn btn-dark', style: 'margin-left: 0.5em'
