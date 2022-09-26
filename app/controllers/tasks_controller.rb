@@ -21,10 +21,10 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = create_task.task
     authorize @task
 
-    if @task.save
+    if create_task.success?
       redirect_to @task, notice: 'Task was successfully created.'
     else
       render :new
@@ -45,7 +45,10 @@ class TasksController < ApplicationController
   end
 
   private
-  
+    def create_task
+      @create_task ||= CreateTask.call(task_params: task_params)
+    end
+
     def set_task
       @task = Task.find(params[:id])
     end
