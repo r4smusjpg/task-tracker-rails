@@ -1,24 +1,17 @@
-# README
+#  Readme
+**Task-Tracker-Rails** - проект с университетских курсов по Ruby и Rails.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Описание**: приложение создано с целью облегчить командам разработчиков (и не только) отслеживать проекты, которыми они занимаются, прикреплять к проектам задания и писать комментарии к заданиям.
 
-Things you may want to cover:
+## Технические вопросы
+Установить необходимые гемы:
 
-* Ruby version
+    bundle install
 
-* System dependencies
+Запустить приложение:
 
-* Configuration
+    rails s
 
-* Database creation
+Запустить автотесты:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    rspec
