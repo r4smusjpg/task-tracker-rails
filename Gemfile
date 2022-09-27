@@ -24,6 +24,7 @@ gem 'pundit'
 gem 'graphql'
 gem 'interactor'
 gem 'sidekiq'
+gem 'rubocop'
 
 
 # Use Active Storage variant
