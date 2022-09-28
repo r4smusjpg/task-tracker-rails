@@ -24,7 +24,6 @@ RSpec.describe 'TaskPolicy', type: :policy do
   describe '#show?' do
     subject { policy.show? }
 
-
     let(:member) { User.new(id: 42) }
     let(:project) { Project.new(id: 43, users: [member]) }
     let(:task) { Task.new(id: 44, project: project) }
