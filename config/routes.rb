@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   resource :session, only: %i[new create]
   delete '/sign-out', to: 'sessions#destroy'
 
-  root 'projects#index'
+  root 'session#new'
 end

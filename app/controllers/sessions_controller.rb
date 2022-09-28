@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 
     if authenticated_user
       session[:current_user_id] = authenticated_user.id
-      redirect_to root_path, notice: "You have successfully signed in."
+      redirect_to projects_path, notice: "You have successfully signed in."
     else
       @user = User.new
       @user.errors.add :base, "Wrong email or password."

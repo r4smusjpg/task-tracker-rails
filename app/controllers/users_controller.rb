@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(users_params)
 
     if @user.save
-      redirect_to root_path, notice: "You have successfully signed up."
+      redirect_to projects_path, notice: "You have successfully signed up."
       session[:current_user_id] = @user.id
     else
       render :new
