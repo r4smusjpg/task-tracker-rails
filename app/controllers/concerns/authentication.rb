@@ -12,6 +12,10 @@ module Authentication
     @current_user = @current_user || User.find_by(id: session[:current_user_id])
   end
 
+  def logged_in?
+    if @current_user.present?
+  end
+
   def authenticate_current_user!
     return if current_user.present?
 
