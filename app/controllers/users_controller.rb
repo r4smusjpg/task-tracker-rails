@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    redirect_to profile_path if current_user.present?
     @user = User.new
   end
 
@@ -13,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    redirect_to profile_path if current_user.present?
     @user = User.new(users_params)
 
     if @user.save

@@ -2,10 +2,12 @@ class SessionsController < ApplicationController
   skip_after_action :verify_authorized
 
   def new
+    redirect_to profile_path if current_user.present?
     @user = User.new
   end
 
   def create
+    redirect_to profile_path if current_user.present?
     authenticated_user = User.find_by(email: user_params[:email])&.authenticate(user_params[:password])
 
     if authenticated_user
