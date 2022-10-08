@@ -1,8 +1,8 @@
 class UpdateComment
-  class SaveRecord
+  class UpdateRecord
     include Interactor
 
-    delegate :comment_params, :comment to: :context
+    delegate :comment_params, :comment, to: :context
 
     def call
       context.comment = comment

@@ -4,10 +4,10 @@ class CommentsController < ApplicationController
   before_action -> { authorize @comment }, only: %i[edit update destroy]
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = create_comment.comment
     authorize @comment
 
-    if @comment.save
+    if create_comment.success?
       redirect_to @comment.task, notice: 'Comment was successfully created.'
     else
       redirect_to @comment.task, alert: 'Comment was not created.'
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update(comment_params)
+    if update_comment.success?
       redirect_to @comment.task, notice: 'Comment was successfully updated.'
     else
       render :edit, alert: 'Comment was not updated.'
@@ -35,6 +35,7 @@ class CommentsController < ApplicationController
   end
 
   private
+  
     def create_comment
       @create_comment ||= CreateComment.call(comment_params: comment_params)
     end
