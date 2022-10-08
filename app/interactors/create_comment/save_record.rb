@@ -11,8 +11,8 @@ class CreateComment
 
     private
 
-    def comment
-      @comment ||= Comment.new(prepared_comment_params)
-    end
+      def comment
+        @comment ||= Comment.new(prepared_comment_params)
+      end
   end
 end

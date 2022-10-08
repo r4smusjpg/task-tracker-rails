@@ -11,8 +11,8 @@ class CreateProject
 
     private
 
-    def project
-      @project ||= Project.new(prepared_project_params)
-    end
+      def project
+        @project ||= Project.new(prepared_project_params)
+      end
   end
 end

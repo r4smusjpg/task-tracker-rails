@@ -10,8 +10,8 @@ class CreateComment
 
     private
 
-    def prepared_comment_params
-      comment_params
-    end
+      def prepared_comment_params
+        comment_params
+      end
   end
 end

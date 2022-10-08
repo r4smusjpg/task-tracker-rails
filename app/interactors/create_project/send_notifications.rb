@@ -12,18 +12,18 @@ class CreateProject
 
     private
 
-    def create_activity
-      RegisterActivityJob.perform_later(current_user.id, "project_created", project.id, "Project")
-    end
-
-    def send_email_notifications
-      project_users.find_each do |user|
-        send_email_notification(project, user)
+      def create_activity
+        RegisterActivityJob.perform_later(current_user.id, "project_created", project.id, "Project")
       end
-    end
 
-    def send_email_notification(project, user)
-      ProjectMailer.project_created(Project.last, User.last).deliver_now
-    end
+      def send_email_notifications
+        project_users.find_each do |user|
+          send_email_notification(project, user)
+        end
+      end
+
+      def send_email_notification(project, user)
+        ProjectMailer.project_created(Project.last, User.last).deliver_now
+      end
   end
 end

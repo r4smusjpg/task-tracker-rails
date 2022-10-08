@@ -10,8 +10,8 @@ class CreateTask
 
     private
 
-    def prepared_task_params
-      task_params
-    end
+      def prepared_task_params
+        task_params
+      end
   end
 end

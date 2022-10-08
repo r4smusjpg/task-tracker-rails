@@ -11,8 +11,8 @@ class CreateTask
 
     private
 
-    def task
-      @task ||= Task.new(prepared_task_params)
-    end
+      def task
+        @task ||= Task.new(prepared_task_params)
+      end
   end
 end
