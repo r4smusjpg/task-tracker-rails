@@ -14,5 +14,9 @@ module Types
     # tasks mutations
     field :create_task, mutation: Mutations::CreateTask
     field :update_task, mutation: Mutations::UpdateTask
+
+    # comments mutations
+    field :create_comment, mutation: Mutations::CreateComment
+    field :update_comment, mutation: Mutations::UpdateComment
   end
 end
