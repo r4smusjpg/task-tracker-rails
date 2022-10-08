@@ -8,5 +8,6 @@ module Types
     end
 
     field :create_project, mutation: Mutations::CreateProject
+    field :update_project, mutation: Mutations::UpdateProject
   end
 end

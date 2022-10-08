@@ -10,13 +10,13 @@ class CreateProject
 
     private
 
-    def prepared_project_params
-      project_params[:user_ids] ||= []
-      project_params.merge(user_ids: user_ids)
-    end
+      def prepared_project_params
+        project_params[:user_ids] ||= []
+        project_params.merge(user_ids: user_ids)
+      end
 
-    def user_ids
-      project_params[:user_ids].push(current_user.id.to_s).uniq
-    end
+      def user_ids
+        project_params[:user_ids].push(current_user.id.to_s).uniq
+      end
   end
 end
