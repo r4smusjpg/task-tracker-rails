@@ -14,10 +14,15 @@ module Types
       "Hello World!"
     end
 
+    # projects queries
     field :projects, resolver: Resolvers::Projects
     field :project, resolver: Resolvers::Project
+
+    # tasks queries
     field :tasks, resolver: Resolvers::Tasks
     field :task, resolver: Resolvers::Task
+
+    # comments queries
     field :comments, resolver: Resolvers::Comments
     field :comment, resolver: Resolvers::Comment
   end
