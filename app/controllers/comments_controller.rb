@@ -27,11 +27,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if @comment.delete
-      redirect_to @comment.task, notice: 'Comment was successfully deleted.'
-    else
-      redirect_to @comment.task, alert: 'Comment was not deleted.'
-    end
+    destroy_comment
+    redirect_to @comment.task, notice: 'Comment was successfully deleted.'
   end
 
   private
@@ -42,6 +39,10 @@ class CommentsController < ApplicationController
 
     def update_comment
       @update_comment ||= UpdateComment.call(comment_params: comment_params, comment: @comment)
+    end
+
+    def destroy_comment
+      @destroy_comment ||= DestroyComment.call(comment: @comment)
     end
 
     def set_comment

@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project.destroy
+    destroy_project
     redirect_to projects_path, notice: 'Project was successfully destroyed.'
   end
 
@@ -50,6 +50,10 @@ class ProjectsController < ApplicationController
 
     def update_project
       @update_project ||= UpdateProject.call(project_params: project_params, current_user: current_user, project: @project)
+    end
+
+    def destroy_project
+      @destroy_project ||= DestroyProject.call(project: @project)
     end
   
     def set_project

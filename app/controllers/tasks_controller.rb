@@ -40,18 +40,22 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task.destroy
+    destroy_task
     redirect_to tasks_path, notice: 'Task was successfully destroyed.'
   end
 
   private
-  
+    
     def create_task
       @create_task ||= CreateTask.call(task_params: task_params)
     end
 
     def update_task
       @update_task ||= UpdateTask.call(task_params: task_params, task: @task)
+    end
+
+    def destroy_task
+      @destroy_task ||= DestroyTask.call(task: @task)
     end
 
     def set_task

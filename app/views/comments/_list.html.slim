@@ -3,4 +3,4 @@ h5 Comments:
   p 
     = comment.user.to_s + ': ' + comment.content
     = link_to 'Edit', edit_task_comment_path(@task, comment), class: 'btn btn-dark', style: 'margin-left: 1em'
-    = link_to 'Delete', task_comment_path(@task, comment), method: :delete, class: 'btn btn-dark', style: 'margin-left: 0.5em'
+    = link_to 'Delete', task_comment_path(@task, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark', style: 'margin-left: 0.5em'
