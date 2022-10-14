@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(users_params)
+    if update_user.success?
       redirect_to '/profile', notice: 'Your profile was successfully updated.'
     else
       render :edit
@@ -37,6 +37,10 @@ class UsersController < ApplicationController
 
     def register_user
       @register_user ||= RegisterUser.call(user_params: user_params)
+    end
+
+    def update_user
+      @update_user ||= UpdateUser.call(user_params: user_params, user: current_user)
     end
   
     def user_params
