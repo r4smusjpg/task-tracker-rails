@@ -15,9 +15,9 @@ class UsersController < ApplicationController
 
   def create
     redirect_to profile_path if current_user.present?
-    @user = User.new(users_params)
+    @user = register_user.user
 
-    if @user.save
+    if register_user.success?
       redirect_to projects_path, notice: "You have successfully signed up."
       session[:current_user_id] = @user.id
     else
@@ -34,8 +34,12 @@ class UsersController < ApplicationController
   end
 
   private
+
+    def register_user
+      @register_user ||= RegisterUser.call(user_params: user_params)
+    end
   
-    def users_params
+    def user_params
       params.require(:user).permit(:email, :full_name, :password)
     end
 end
