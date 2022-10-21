@@ -5,7 +5,7 @@ module Mutations
     type Types::Payloads::SignUpPayload
 
     def resolve(input:)
-      sign_up = RegisterUser.call(user_params: input.to_h)
+      sign_up = ::RegisterUser.call(user_params: input.to_h)
 
       if sign_up.success?
         sign_up.to_h
