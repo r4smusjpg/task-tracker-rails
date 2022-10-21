@@ -26,7 +26,6 @@ gem 'interactor'
 gem 'sidekiq'
 gem 'rubocop'
 
-
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
