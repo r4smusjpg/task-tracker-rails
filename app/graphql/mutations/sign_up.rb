@@ -5,12 +5,12 @@ module Mutations
     type Types::Payloads::SignUpPayload
 
     def resolve(input:)
-      sign_up = ::RegisterUser.call(user_params: input.to_h)
+      result = ::RegisterUser.call(user_params: input.to_h)
 
-      if sign_up.success?
-        sign_up.to_h
+      if result.success?
+        result.to_h
       else
-        format_errors user: sign_up.user
+        format_errors user: result.user
       end
     end
   end

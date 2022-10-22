@@ -1,13 +1,11 @@
 module Mutations
   class CreateComment < BaseMutation
-    argument :task_id, ID, required: true
-    argument :user_id, ID, required: true
-    argument :content, String, required: true
+    argument :input, Types::Inputs::CommentInput, required: true
 
     type Types::CommentType
 
-    def resolve(**options)
-      result = ::CreateComment.call(comment_params: options)
+    def resolve(input:)
+      result = ::CreateComment.call(comment_params: input.to_h)
 
       if result.success?
         result.comment
