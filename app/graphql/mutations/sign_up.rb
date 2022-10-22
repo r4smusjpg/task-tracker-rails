@@ -1,5 +1,5 @@
 module Mutations
-  class SignUp < BaseMutation
+  class SignUp < Mutations::BaseMutation
     argument :input, Types::Inputs::SignUpInput, required: true
 
     type Types::Payloads::SignUpPayload

@@ -3,15 +3,15 @@ module Mutations
     class CreateComment < Mutations::BaseMutation
       argument :input, Types::Inputs::CommentInput, required: true
 
-      type Types::CommentType
+      type Types::Payloads::CommentPayload
 
       def resolve(input:)
         result = ::CreateComment.call(comment_params: input.to_h)
 
         if result.success?
-          result.comment
+          result.to_h
         else
-          nil
+          format_errors(comment: result.comment)
         end
       end
     end

@@ -1,6 +1,6 @@
 module Types
   module Payloads
-    class UserError < Types::BaseObject
+    class Error < Types::BaseObject
       description "A user-readable error"
 
       field :field, String, null: false, description: "Invalid field"
