@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  ALLOWED_STATUSES = ["not_started", "started", "finished"]
+  ALLOWED_STATUSES = ['not_started', 'started', 'finished']
 
   # relations
   belongs_to :project

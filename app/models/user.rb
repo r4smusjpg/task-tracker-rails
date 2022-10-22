@@ -1,7 +1,6 @@
 class User < ApplicationRecord
-  # relations
   has_secure_password
-
+  # relations
   has_and_belongs_to_many :projects
 
   # validations

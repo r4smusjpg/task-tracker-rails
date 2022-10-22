@@ -1,19 +1,15 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+User.create!(full_name: 'aboba',
+             email: 'aboba@mail.ru',
+             password: '123')
 
 10.times do |u|
-  name = Faker::Name.name
+  full_name = Faker::Name.name
   email = "example-#{u+1}@tasktracker.org"
   password = "password"
 
-  User.create!( full_name: name,
-                email: email,
-                password: password)
+  User.create!(full_name: full_name,
+               email: email,
+               password: password)
 end
 
 10.times do |p|
@@ -33,10 +29,10 @@ Project.count.times do |p|
     project = Project.find(p + 1)
     deadline_at = Time.now.to_s(:long)
 
-    Task.create!( title: title,
-                  description: description,
-                  deadline_at: deadline_at,
-                  project: project)
+    Task.create!(title: title,
+                 description: description,
+                 deadline_at: deadline_at,
+                 project: project)
   end
 end
 
