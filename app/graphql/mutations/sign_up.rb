@@ -10,7 +10,7 @@ module Mutations
       if result.success?
         result.to_h
       else
-        format_errors user: result.user
+        format_errors(user: result.user)
       end
     end
   end
