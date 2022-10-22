@@ -4,26 +4,16 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
-
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
-    end
-
     # projects queries
-    field :projects, resolver: Resolvers::Projects
-    field :project, resolver: Resolvers::Project
+    field :projects, resolver: Resolvers::ProjectResolvers::Projects
+    field :project, resolver: Resolvers::ProjectResolvers::Project
 
     # tasks queries
-    field :tasks, resolver: Resolvers::Tasks
-    field :task, resolver: Resolvers::Task
+    field :tasks, resolver: Resolvers::TaskResolvers::Tasks
+    field :task, resolver: Resolvers::TaskResolvers::Task
 
     # comments queries
-    field :comments, resolver: Resolvers::Comments
-    field :comment, resolver: Resolvers::Comment
+    field :comments, resolver: Resolvers::CommentResolvers::Comments
+    field :comment, resolver: Resolvers::CommentResolvers::Comment
   end
 end
