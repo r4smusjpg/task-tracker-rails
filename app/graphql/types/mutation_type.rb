@@ -4,14 +4,14 @@ module Types
     field :sign_up, mutation: Mutations::SignUp
 
     # projects mutations
-    field :create_project, mutation: Mutations::CreateProject
-    field :update_project, mutation: Mutations::UpdateProject
-    field :destroy_project, mutation: Mutations::DestroyProject
+    field :create_project, mutation: Mutations::ProjectMutations::CreateProject
+    field :update_project, mutation: Mutations::ProjectMutations::UpdateProject
+    field :destroy_project, mutation: Mutations::ProjectMutations::DestroyProject
 
     # tasks mutations
-    field :create_task, mutation: Mutations::CreateTask
-    field :update_task, mutation: Mutations::UpdateTask
-    field :destroy_task, mutation: Mutations::DestroyTask
+    field :create_task, mutation: Mutations::TaskMutations::CreateTask
+    field :update_task, mutation: Mutations::TaskMutations::UpdateTask
+    field :destroy_task, mutation: Mutations::TaskMutations::DestroyTask
 
     # comments mutations
     field :create_comment, mutation: Mutations::CreateComment
