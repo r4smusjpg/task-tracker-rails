@@ -3,13 +3,13 @@ module Mutations
     class DestroyComment < Mutations::BaseMutation
       argument :id, ID, required: true
 
-      type Types::CommentType
+      type Types::Payloads::CommentPayload
 
       def resolve(**options)
         result = ::DestroyComment.call(comment: ::Comment.find_by(id: options[:id]))
 
         if result.success?
-          result.comment
+          result.to_h
         else
           nil
         end
