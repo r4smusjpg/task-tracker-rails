@@ -3,13 +3,13 @@ module Mutations
     class DestroyProject < Mutations::BaseMutation
       argument :id, ID, required: true
 
-      type Types::ProjectType
+      type Types::Payloads::ProjectPayload
 
       def resolve(**options)
         result = ::DestroyProject.call(project: ::Project.find_by(id: options[:id]))
 
         if result.success?
-          result.project
+          result.to_h
         else
           nil
         end

@@ -3,15 +3,15 @@ module Mutations
     class CreateProject < Mutations::BaseMutation
       argument :input, Types::Inputs::ProjectInput, required: true
 
-      type Types::ProjectType
+      type Types::Payloads::ProjectPayload
 
       def resolve(input:)
         result = ::CreateProject.call(project_params: input.to_h, current_user: current_user)
 
         if result.success?
-          result.project
+          result.to_h
         else
-          nil
+          format_errors(project: result.project)
         end
       end
     end

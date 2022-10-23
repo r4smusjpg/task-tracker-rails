@@ -6,15 +6,15 @@ module Mutations
       argument :description, String, required: false
       argument :user_ids, [ID], required: false
 
-      type Types::ProjectType
+      type Types::Payloads::ProjectPayload
 
       def resolve(**options)
         result = ::UpdateProject.call(project_params: options, project: ::Project.find_by(id: options[:id]))
 
         if result.success?
-          result.project
+          result.to_h
         else
-          nil
+          format_errors(project: result.project)
         end
       end
     end
