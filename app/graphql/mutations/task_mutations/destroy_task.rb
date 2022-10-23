@@ -3,13 +3,13 @@ module Mutations
     class DestroyTask < Mutations::BaseMutation
       argument :id, ID, required: true
 
-      type Types::TaskType
+      type Types::Payloads::TaskPayload
 
       def resolve(**options)
         result = ::DestroyTask.call(task: ::Task.find_by(id: options[:id]))
 
         if result.success?
-          result.task
+          result.to_h
         else
           nil
         end

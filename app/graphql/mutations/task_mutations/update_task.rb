@@ -7,15 +7,15 @@ module Mutations
       argument :deadline_at, GraphQL::Types::ISO8601DateTime, required: false
       argument :status, String, required: false
 
-      type Types::TaskType
+      type Types::Payloads::TaskPayload
 
       def resolve(**options)
         result = ::UpdateTask.call(task_params: options, task: ::Task.find_by(id: options[:id]))
 
         if result.success?
-          result.task
+          result.to_h
         else
-          nil
+          format_errors(task: result.task)
         end
       end
     end
