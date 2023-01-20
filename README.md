@@ -20,8 +20,8 @@
 
 Запустить автотесты:
 
-    $ rspec
+    $ bundle exec rspec
 
 Запустить линтер:
 
-    $ rubocop
+    $ bundle exec rubocop
